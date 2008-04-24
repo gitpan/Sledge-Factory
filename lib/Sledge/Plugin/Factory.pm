@@ -2,33 +2,33 @@ package Sledge::Plugin::Factory;
 use strict;
 use warnings;
 use base qw/Exporter/;
-our @EXPORT = qw/adaptor/;
+our @EXPORT = qw/factory/;
 use Sledge::Utils;
 use UNIVERSAL::require;
 
-sub adaptor {
+sub factory {
     my ($app, $module) = @_;
 
     my $base = Sledge::Utils::class2appclass($app);
-    my $adaptor = "${base}::Factory::${module}";
-    $adaptor->require or die $@;
+    my $factory = "${base}::Factory::${module}";
+    $factory->require or die $@;
 
-    if ($adaptor->__per_context) {
-        $app->{"__Factory::$module"} ||= _create_instance( $app, $module, $adaptor );
+    if ($factory->__per_context) {
+        $app->{"__Factory::$module"} ||= _create_instance( $app, $module, $factory );
     } else {
-        _create_instance( $app, $module, $adaptor );
+        _create_instance( $app, $module, $factory );
     }
 }
 
 sub _create_instance {
-    my ($app, $module, $adaptor) = @_;
+    my ($app, $module, $factory) = @_;
 
     my $config = $app->create_config->{"Factory::$module"};
 
-    my $constructor = $adaptor->__constructor;
-    my $klass = $adaptor->__class;
+    my $constructor = $factory->__constructor;
+    my $klass = $factory->__class;
     $klass->require or die $@;
-    $klass->$constructor( $adaptor->__prepare_arguments->($app, $config) );
+    $klass->$constructor( $factory->__prepare_arguments->($app, $config) );
 }
 
 1;
@@ -36,7 +36,7 @@ __END__
 
 =head1 NAME
 
-Sledge::Plugin::Factory - adaptor
+Sledge::Plugin::Factory - factory
 
 =head1 SYNOPSIS
 
@@ -45,8 +45,8 @@ Sledge::Plugin::Factory - adaptor
 
     sub dispatch_index {
         my $self = shift;
-        $self->adaptor('TheSchwartz')->insert($job);
-        $self->adaptor('TheSchwartz')->list_jobs({funcname => 'MyApp::Worker'});
+        $self->factory('TheSchwartz')->insert($job);
+        $self->factory('TheSchwartz')->list_jobs({funcname => 'MyApp::Worker'});
     }
 
 =head1 DESCRIPTION

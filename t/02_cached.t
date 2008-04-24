@@ -9,11 +9,11 @@ sub new { bless { }, shift }
 
 sub dispatch_foo {
     my $self = shift;
-    is $self->adaptor('POPO')->bar, 1;
-    is $self->adaptor('POPO')->bar, 2;
+    is $self->factory('POPO')->bar, 1;
+    is $self->factory('POPO')->bar, 2;
 
-    is $self->adaptor('POPOCached')->bar, 3;
-    is $self->adaptor('POPOCached')->bar, 3; # not incremented here.
+    is $self->factory('POPOCached')->bar, 3;
+    is $self->factory('POPOCached')->bar, 3; # not incremented here.
 }
 
 sub create_config {

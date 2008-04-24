@@ -1,4 +1,8 @@
 Revision history for Perl extension Sledge::Model::Factory
 
+0.02
+
+    - interface change: adaptor => factory
+
 0.01    Wed Apr 23 11:18:10 2008
         - original version

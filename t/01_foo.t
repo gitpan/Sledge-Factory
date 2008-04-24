@@ -9,7 +9,7 @@ sub new { bless { }, shift }
 
 sub dispatch_foo {
     my $self = shift;
-    $self->adaptor('POPO')->foo;
+    $self->factory('POPO')->foo;
 }
 
 sub create_config {

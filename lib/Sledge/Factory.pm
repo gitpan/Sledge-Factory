@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use base qw/Class::Data::Inheritable/;
 use 5.00800;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use constant false => 0;
 
 sub import {
@@ -39,7 +39,7 @@ __END__
 
 =head1 NAME
 
-Sledge::Factory - the adaptor.
+Sledge::Factory - the factory.
 
 =head1 SYNOPSIS
 
@@ -59,7 +59,7 @@ Sledge::Factory - the adaptor.
 
 =head1 DESCRIPTION
 
-Sledge::Factory is adaptor module for Sledge.
+Sledge::Factory is factory module for Sledge.
 
 This is inspire of L<Catalyst::Model::Adaptor>
 
