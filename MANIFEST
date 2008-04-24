@@ -28,3 +28,4 @@ t/02_cached.t
 t/Factory/POPO.pm
 t/Factory/POPOCached.pm
 t/POPO.pm
+t/03_base.t

@@ -9,7 +9,7 @@ use UNIVERSAL::require;
 sub factory {
     my ($app, $module) = @_;
 
-    my $base = Sledge::Utils::class2appclass($app);
+    my $base = $app->can('base_name') ? $app->base_name : Sledge::Utils::class2appclass($app);
     my $factory = "${base}::Factory::${module}";
     $factory->require or die $@;
 

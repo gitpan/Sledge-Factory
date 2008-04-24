@@ -2,8 +2,10 @@ use inc::Module::Install;
 name 'Sledge-Factory';
 all_from 'lib/Sledge/Factory.pm';
 
-requires $_ for (qw/
-/);
+requires "Class::Data::Inheritable";
+requires 'Exporter';
+requires 'Sledge::Utils';
+requires 'UNIVERSAL::require';
 
 build_requires 'Test::More';
 build_requires 'YAML';

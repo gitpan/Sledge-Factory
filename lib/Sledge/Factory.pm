@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use base qw/Class::Data::Inheritable/;
 use 5.00800;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 use constant false => 0;
 
 sub import {

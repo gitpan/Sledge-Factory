@@ -1,5 +1,10 @@
 Revision history for Perl extension Sledge::Model::Factory
 
+0.03
+
+    - fixed deps.
+    - added ->base_name support(for mofedge).
+
 0.02
 
     - interface change: adaptor => factory
